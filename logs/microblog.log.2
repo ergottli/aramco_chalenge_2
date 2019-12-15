@@ -1,0 +1,132 @@
+2019-11-05 22:42:57,294 ERROR: Exception on /explore [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 64, in explore
+    prev_url=prev_url)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base.html", line 1, in top-level template code
+    {% extends 'base_bootstrap.html' %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 26, in block "html"
+    {% block body -%}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 28, in block "body"
+    {% block navbar %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base.html", line 51, in block "navbar"
+    <a class="nav-link" href="{{ url_for('main.nlp') }}">
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.nlp'. Did you mean 'main.analyse' instead?
+2019-11-05 22:44:11,617 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 22:46:14,413 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 22:47:35,915 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 22:54:26,426 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 23:00:13,069 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 23:00:16,048 ERROR: Exception on /nlp [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 261, in nlp
+    return render_template("nlp.html", form=form)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/nlp.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base.html", line 1, in top-level template code
+    {% extends 'base_bootstrap.html' %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 26, in block "html"
+    {% block body -%}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base_bootstrap.html", line 30, in block "body"
+    {% block content -%}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/base.html", line 172, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/nderek/Desktop/MTSMusic/app/templates/nlp.html", line 21, in block "app_content"
+    <i class="material-icons">mail</i> {{ user.email }}
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2019-11-05 23:01:27,904 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 23:01:30,999 ERROR: Exception on /nlp [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 250, in nlp
+    user = User.query.filter_by(username=username).first_or_404()
+NameError: name 'username' is not defined
+2019-11-05 23:02:49,881 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 23:27:42,063 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 23:35:53,799 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]

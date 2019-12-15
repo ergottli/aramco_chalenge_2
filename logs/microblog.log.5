@@ -1,0 +1,109 @@
+2019-11-04 18:57:34,478 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 239, in analyse_result
+    result = ValuePredictor(to_predict_list)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 223, in ValuePredictor
+    loaded_model = pickle.load(open("model.pkl", "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: 'model.pkl'
+2019-11-04 18:58:24,782 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 18:58:36,376 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 239, in analyse_result
+    result = ValuePredictor(to_predict_list)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 223, in ValuePredictor
+    loaded_model = pickle.load(open("model.pkl", "rb"))
+ModuleNotFoundError: No module named 'sklearn'
+2019-11-04 18:59:59,607 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 19:00:10,599 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 239, in analyse_result
+    result = ValuePredictor(to_predict_list)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 223, in ValuePredictor
+    loaded_model = pickle.load(open("model.pkl", "rb"))
+  File "sklearn/tree/_tree.pyx", line 606, in sklearn.tree._tree.Tree.__cinit__
+ValueError: Buffer dtype mismatch, expected 'SIZE_t' but got 'int'
+2019-11-04 19:10:37,822 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 19:50:59,859 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 19:58:22,060 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 20:01:12,451 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 20:02:03,127 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 21:21:37,304 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 21:39:34,209 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 22:17:59,308 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 22:25:36,257 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 238, in analyse_result
+    to_predict_list = list(map(int, to_predict_list))
+ValueError: invalid literal for int() with base 10: 'иапи'
+2019-11-04 22:27:10,200 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 22:33:51,385 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 22:41:33,430 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 22:48:50,659 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:13:37,501 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:19:38,027 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:22:08,615 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:23:32,000 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:24:26,775 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:27:56,213 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:29:26,749 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:30:20,415 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 14:56:13,423 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 15:01:51,124 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 15:31:30,640 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 15:56:10,104 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]

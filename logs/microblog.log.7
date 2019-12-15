@@ -1,0 +1,72 @@
+2019-11-04 14:43:05,832 ERROR: Exception on / [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.first_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1811, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2087, in preprocess_request
+    rv = func()
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 16, in before_request
+    if current_user.is_authenticated:
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 302, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 317, in _load_user
+    return self.reload_user()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 279, in reload_user
+    user = self.user_callback(user_id)
+  File "/Users/nderek/Desktop/MTSMusic/app/models.py", line 242, in load_user
+    return User.query.get(int(id))
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 864, in get
+    return self._get_impl(ident, loading.load_on_ident)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 897, in _get_impl
+    return fallback_fn(self, key)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 223, in load_on_ident
+    return q.one()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2814, in one
+    ret = self.one_or_none()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2784, in one_or_none
+    ret = list(self)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2855, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2878, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.first_name [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.first_name AS user_first_name, user.last_name AS user_last_name, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen, user.token AS user_token, user.token_expiration AS user_token_expiration, user.last_message_read_time AS user_last_message_read_time \nFROM user \nWHERE user.id = ?'] [parameters: (1,)]

@@ -1,0 +1,22 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="{{ url_for('static', filename="assets/js/3d-force-graph.min.js")}}"></script>
+  <!--<script src="../../dist/3d-force-graph.js"></script>-->
+</head>
+
+<body>
+
+  <div id="3d-graph"></div>
+
+  <script>
+    const elem = document.getElementById('3d-graph');
+
+    const Graph = ForceGraph3D()(elem)
+      .jsonUrl('{{ url_for('static', filename="assets/js/persons.json")}}')
+      .nodeAutoColorBy('toxic')
+      .nodeLabel(node => `Person${node.id} Токсичность: ${node.toxic}`)
+      .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null)
+      .onNodeClick(node => window.open(`localhost:5000/user/person${node.id}`, '_blank'));
+  </script>
+</body>

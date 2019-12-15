@@ -1,0 +1,318 @@
+{% extends 'base_bootstrap.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Hackathon{% else %}{{ _('Hackathon') }}{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <!-- Сайдбар -->
+<div class="wrapper ">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../static/assets/img/sidebar-3.jpg">
+      <div class="logo">
+        <a href="{{ url_for('main.index') }}" class="simple-text logo-normal">
+          <img src="../static/assets/img/favicon.png" alt="" width="45" height="45"> Aramco Saudi
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          {% if current_user.is_anonymous %}
+            <li class="nav-item active  ">
+                <a class="nav-link" href="{{ url_for('auth.login') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{ _('Sign In') }}</p>
+                </a>
+            </li>
+          {% else %}
+          <li class="nav-item active  ">
+            <a class="nav-link" href="{{ url_for('main.index') }}">
+              <i class="material-icons">dashboard</i>
+              <p>{{ _('Home') }}</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ url_for('main.user', username=current_user.username) }}">
+              <i class="material-icons">person</i>
+              <p>{{ _('Profile') }}</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ url_for('main.analyse') }}">
+              <i class="material-icons">poll</i>
+              <p>{{ _('ML-Analyse') }}</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ url_for('main.messages') }}">
+              <i class="material-icons">library_books</i>
+              <p>{{ _('Messages') }}</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ url_for('auth.logout') }}">
+              <i class="material-icons">bubble_chart</i>
+              <p>{{ _('Logout') }}</p>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <!-- Конец боковой панели -->
+
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="#pablo">OilField Geochemistry Analysis</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Поиск...">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+            <ul class="navbar-nav">
+              {% if current_user.is_anonymous %}
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">notifications</i>
+                  <p class="d-lg-none d-md-block">
+                    Notifications
+                  </p>
+                </a>
+              </li>
+              {% else %}
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">notifications</i>
+                  {% set new_messages = current_user.new_messages() %}
+                  <span id="message_count" class="notification"
+                                  style="visibility: {% if new_messages %}visible
+                                                     {% else %}hidden{% endif %};">
+                                {{ new_messages }}
+                  </span>
+                  <p class="d-lg-none d-md-block">
+                    Notifications
+                  </p>
+                </a>
+              </li>
+              {% endif %}
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Profile
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                    {% if current_user.is_anonymous %}
+                    <a class="dropdown-item" href="{{ url_for('auth.login') }}">{{ _('SignIn') }}</a>
+                    {% else %}
+                  <a class="dropdown-item" href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a>
+                  <a class="dropdown-item" href="{{ url_for('main.messages') }}">{{ _('Messages') }}</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
+                  {% endif %}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+        {% if current_user.is_authenticated %}
+        {% with tasks = current_user.get_tasks_in_progress() %}
+        {% if tasks %}
+            {% for task in tasks %}
+            <div class="alert alert-success" role="alert">
+                {{ task.description }}
+                <span id="{{ task.id }}-progress">{{ task.get_progress() }}</span>%
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% endif %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+</div>
+<footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="#">
+                  No More Lyali
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  About Us
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="#" target="_blank">No More Lyali</a>
+          </div>
+        </div>
+      </footer>
+  </div>
+</div>
+<!-- Боковая панель настроек -->
+<div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title">Switch</li>
+        <li class="active">
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../static/assets/img/sidebar-1.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../static/assets/img/sidebar-2.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../static/assets/img/sidebar-3.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../static/assets/img/sidebar-4.jpg" alt="">
+          </a>
+        </li>
+        <li class="button-container">
+          <a href="#" target="_blank" class="btn btn-success btn-block">Reload</a>
+        </li>
+        <li class="button-container">
+          <a href="#" target="_blank" class="btn btn-default btn-block">
+            Documentation
+          </a>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+    <script>
+        function translate(sourceElem, destElem, sourceLang, destLang) {
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function(response) {
+                $(destElem).text(response['text'])
+            }).fail(function() {
+                $(destElem).text("{{ _('Error: Could not contact server.') }}");
+            });
+        }
+        $(function () {
+            var timer = null;
+            var xhr = null;
+            $('.user_popup').hover(
+                function(event) {
+                    var elem = $(event.currentTarget);
+                    timer = setTimeout(function() {
+                        timer = null;
+                        xhr = $.ajax(
+                            '/user/' + elem.first().text().trim() + '/popup').done(
+                                function(data) {
+                                    xhr = null;
+                                    elem.popover({
+                                        trigger: 'manual',
+                                        html: true,
+                                        animation: false,
+                                        container: elem,
+                                        content: data
+                                    }).popover('show');
+                                    flask_moment_render_all();
+                                }
+                            );
+                    }, 1000);
+                },
+                function(event) {
+                    var elem = $(event.currentTarget);
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    else if (xhr) {
+                        xhr.abort();
+                        xhr = null;
+                    }
+                    else {
+                        elem.popover('destroy');
+                    }
+                }
+            );
+        });
+        function set_message_count(n) {
+            $('#message_count').text(n);
+            $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+        }
+        function set_task_progress(task_id, progress) {
+            $('#' + task_id + '-progress').text(progress);
+        }
+        {% if current_user.is_authenticated %}
+        $(function() {
+            var since = 0;
+            setInterval(function() {
+                $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+                    function(notifications) {
+                        for (var i = 0; i < notifications.length; i++) {
+                            switch (notifications[i].name) {
+                                case 'unread_message_count':
+                                    set_message_count(notifications[i].data);
+                                    break;
+                                case 'task_progress':
+                                    set_task_progress(notifications[i].data.task_id,
+                                        notifications[i].data.progress);
+                                    break;
+                            }
+                            since = notifications[i].timestamp;
+                        }
+                    }
+                );
+            }, 10000);
+        });
+        {% endif %}
+    </script>
+{% endblock %}

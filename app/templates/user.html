@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-success">
+                  <h4 class="card-title">Profile</h4>
+                  <p class="card-category">Information</p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Aramco Saudi</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ user.username }}</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ user.email }}</label>
+                          <input type="email" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ user.first_name }}</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ user.last_name }}</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Adress</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">City</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Country</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Postal Code</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>О себе</label>
+                          <div class="form-group">
+                            <label class="bmd-label-floating">{% if user.about_me %}{{ user.about_me }}{% endif %}</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% if user == current_user %}
+                    <a class="btn btn-success pull-right" href="{{ url_for('main.edit_profile') }}">{{ _('Edit') }}</a>
+                    {% endif %}
+                    {% if user == current_user and not current_user.get_task_in_progress('export_posts') %}
+                    <a class="btn btn-success pull-right" href="{{ url_for('main.export_posts') }}">{{ _('Export Statistics') }}</a>
+                    {% endif %}
+                    {% if user != current_user %}
+                    <a class="btn btn-success pull-right" href="{{ url_for('main.send_message', recipient=user.username) }}">{{ _('Message') }}</a>
+                    {% endif %}
+                    
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  <a href="#pablo">
+                    <img class="img" src="{{ user.avatar(256) }}" />
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-category text-gray">Expert / Researcher</h6>
+                  <h4 class="card-title">{{ user.first_name }} {{ user.last_name }}</h4>
+                {% if user.last_seen %}
+                <p class="card-description">
+                    {{ _('Was here:') }}: {{ moment(user.last_seen).format('LLL') }}</p>
+                {% endif %}
+                <p class="card-description">{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d подписок', count=user.followed.count()) }}</p>
+                  
+                    {% if not current_user.is_following(user) %}
+                    <a href="{{ url_for('main.follow', username=user.username) }}" class="btn btn-success btn-round">{{ _('Follow') }}</a>
+                    {% else %}
+                    <a href="{{ url_for('main.unfollow', username=user.username) }}" class="btn btn-success btn-round">{{ _('Unfollow') }}</a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+2019-11-03 23:01:25,626 ERROR: Exception on /export_posts [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 492, in connect
+    sock = self._connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 550, in _connect
+    raise err
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 538, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 201, in export_posts
+    current_user.launch_task('export_posts', _('Экспорт...'))
+  File "/Users/nderek/Desktop/MTSMusic/app/models.py", line 178, in launch_task
+    *args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 327, in enqueue
+    at_front=at_front, meta=meta
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 277, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 353, in enqueue_job
+    pipe.execute()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/client.py", line 3514, in execute
+    self.shard_hint)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 994, in get_connection
+    connection.connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 497, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to None:6379. Connection refused.
+2019-11-03 23:01:55,548 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-03 23:02:01,906 ERROR: Exception on /export_posts [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 492, in connect
+    sock = self._connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 550, in _connect
+    raise err
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 538, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 201, in export_posts
+    current_user.launch_task('export_posts', _('Экспорт...'))
+  File "/Users/nderek/Desktop/MTSMusic/app/models.py", line 178, in launch_task
+    *args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 327, in enqueue
+    at_front=at_front, meta=meta
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 277, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 353, in enqueue_job
+    pipe.execute()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/client.py", line 3514, in execute
+    self.shard_hint)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 994, in get_connection
+    connection.connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 497, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to None:6379. Connection refused.
+2019-11-04 01:51:40,554 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 14:34:33,411 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 14:39:20,719 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 14:41:22,312 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-04 14:42:57,971 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]

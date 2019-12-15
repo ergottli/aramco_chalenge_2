@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+     <h3> {{ user.username }}</h3>
+     <h1>{{ _('Социальный граф') }}</h1>
+     <a class="btn btn-success" href="{{ url_for('main.watch_graph') }}">Социальный граф (Связи)</a>
+     <a class="btn btn-success" href="{{ url_for('main.watch_graph_toxic') }}">Социальный граф (Токсичность)</a>
+     <a class="btn btn-success" href="{{ url_for('main.watch_graph_group') }}">Социальный граф (Отделы)</a>
+     <br>
+     </br>
+     <h2>{{ _('Добавить информацию в БД') }}</h2>
+    <div>
+  <form action="/analyse_graph" method="POST">
+    <h3>Добавить узел (Сотрудник)</h3>
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="personid">Person (id сотрудника)</label>
+      <input class="form-control" type="number" id="personid" name="personid">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="toxic">Токсичность</label>
+    <select class="form-control" id="toxic" name="toxic">
+      <option value="0">Да</option>
+      <option value="1">Нет</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="department">Департамент</label>
+    <select class="form-control" id="department" name="department">
+      <option value="0">Продажи</option>
+      <option value="1">Разработка и исследования</option>
+      <option value="2">Управление</option>
+    </select>
+    </div>
+    </div>
+    <h3>Добавить связь</h3>
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="source">Исходный сотрудник (id)</label>
+      <input class="form-control" type="number" id="source" name="source">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="target">Целевой сотрудник (id)</label>
+      <input class="form-control" type="number" id="target" name="target">
+      </div>
+    </div>
+    <input class="btn btn-success" type="submit" value="Добавить">
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+2019-11-06 20:25:18,163 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 00:20:07,049 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 05:52:15,805 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 16:32:43,322 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 16:36:42,849 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 16:36:59,444 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 16:37:03,840 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 16:43:46,970 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 18:34:02,700 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-07 21:08:09,233 ERROR: Exception on /export_posts [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 492, in connect
+    sock = self._connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 550, in _connect
+    raise err
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 538, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 203, in export_posts
+    current_user.launch_task('export_posts', _('Экспорт...'))
+  File "/Users/nderek/Desktop/MTSMusic/app/models.py", line 180, in launch_task
+    *args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 327, in enqueue
+    at_front=at_front, meta=meta
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 277, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 353, in enqueue_job
+    pipe.execute()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/client.py", line 3514, in execute
+    self.shard_hint)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 994, in get_connection
+    connection.connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 497, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to None:6379. Connection refused.
+2019-11-12 11:38:11,412 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-12 11:38:35,619 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 00:14:53,191 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 02:07:20,021 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 02:09:55,007 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 02:11:55,744 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 02:43:23,281 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 02:49:55,110 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-13 02:58:20,195 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 06:47:44,788 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 06:53:20,798 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 06:55:07,399 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 06:58:39,066 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:00:27,305 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:04:20,978 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:10:00,525 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:13:21,200 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:16:34,571 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:28:43,586 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 07:51:10,474 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 08:27:51,387 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 08:53:56,754 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 08:57:11,299 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 08:59:27,727 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 09:12:18,635 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 09:34:36,189 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 09:37:23,292 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 09:38:58,070 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 240, in analyse_result
+    result = ValuePredictor(to_predict_list)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 222, in ValuePredictor
+    to_predict = np.array(to_predict_list).reshape(1, 20)
+ValueError: cannot reshape array of size 5 into shape (1,20)
+2019-11-19 09:52:48,159 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 09:54:37,650 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:02:52,060 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:07:53,680 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:20:51,277 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:48:04,572 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:48:45,521 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:50:45,344 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:52:27,107 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-19 10:52:49,286 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]

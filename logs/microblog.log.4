@@ -1,0 +1,121 @@
+2019-11-05 15:57:05,312 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 241, in analyse_result
+    result = ValuePredictor(to_predict_list)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 225, in ValuePredictor
+    loaded_model = pickle.load(open("model_xgb.pkl", "rb"))
+ModuleNotFoundError: No module named 'xgboost'
+2019-11-05 15:58:52,933 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 15:59:09,525 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 15:59:54,200 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 241, in analyse_result
+    result = ValuePredictor(to_predict_list)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 226, in ValuePredictor
+    result = loaded_model.predict(to_predict)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/xgboost/sklearn.py", line 791, in predict
+    validate_features=validate_features)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/xgboost/core.py", line 1284, in predict
+    self._validate_features(data)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/xgboost/core.py", line 1690, in _validate_features
+    data.feature_names))
+ValueError: feature_names mismatch: ['Age', 'BusinessTravel', 'Department', 'DistanceFromHome', 'Education', 'EducationField', 'Gender', 'JobLevel', 'JobRole', 'MaritalStatus', 'MonthlyIncome', 'NumCompaniesWorked', 'Over18', 'PercentSalaryHike', 'StockOptionLevel', 'TotalWorkingYears', 'TrainingTimesLastYear', 'YearsAtCompany', 'YearsSinceLastPromotion', 'YearsWithCurrManager'] ['f0', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19']
+expected Over18, MonthlyIncome, DistanceFromHome, EducationField, TrainingTimesLastYear, NumCompaniesWorked, TotalWorkingYears, MaritalStatus, YearsSinceLastPromotion, Gender, StockOptionLevel, JobRole, BusinessTravel, JobLevel, Age, Department, PercentSalaryHike, YearsWithCurrManager, YearsAtCompany, Education in input data
+training data did not have the following fields: f6, f4, f3, f7, f0, f15, f16, f17, f9, f8, f14, f13, f12, f10, f19, f11, f2, f18, f1, f5
+2019-11-05 18:09:08,618 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 18:55:36,982 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 18:56:12,413 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 19:02:37,822 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 22:20:45,541 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]
+2019-11-05 22:21:09,558 ERROR: Exception on /analyse_result [POST] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 239, in analyse_result
+    to_predict_list = list(map(int, to_predict_list))
+ValueError: invalid literal for int() with base 10: ''
+2019-11-05 22:22:19,199 ERROR: Exception on /export_posts [GET] [in /Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 492, in connect
+    sock = self._connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 550, in _connect
+    raise err
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 538, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/app/main/routes.py", line 203, in export_posts
+    current_user.launch_task('export_posts', _('Экспорт...'))
+  File "/Users/nderek/Desktop/MTSMusic/app/models.py", line 180, in launch_task
+    *args, **kwargs)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 327, in enqueue
+    at_front=at_front, meta=meta
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 277, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/rq/queue.py", line 353, in enqueue_job
+    pipe.execute()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/client.py", line 3514, in execute
+    self.shard_hint)
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 994, in get_connection
+    connection.connect()
+  File "/Users/nderek/Desktop/MTSMusic/venv/lib/python3.7/site-packages/redis/connection.py", line 497, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to None:6379. Connection refused.
+2019-11-05 22:42:53,509 INFO: Microblog startup [in /Users/nderek/Desktop/MTSMusic/app/__init__.py:89]

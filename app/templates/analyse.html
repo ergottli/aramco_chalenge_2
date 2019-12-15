@@ -1,0 +1,576 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1><i class="material-icons">sports_soccer</i> Gas Concentration Prediction Model</h1>
+    <h3><i class="material-icons">info</i> Load your CSV or put informatiion in forms (most valuable features)</h3>
+    <div class="row"><a class="btn btn-success pull-right" href="#">Load CSV</a></div>
+    <div>
+
+  <form action="/analyse_result" method="POST">
+    <div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="Country"><i class="material-icons">where_to_vote</i> COUNTRY</label>
+    <select class="form-control"  step="0.01" id="Country" name="Country">
+      <option value="0">United Kingdom</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WELL NAME"><i class="material-icons">assignment</i> WELL_NAME</label>
+    <select class="form-control" id="WELL_NAME" name="WELL_NAME">
+      <option value="0">013/23-01</option>
+      <option value="1">014/20b-18</option>
+      <option value="2">014/26a-06</option>
+      <option value="3">014/26a-07A</option>
+      <option value="4">014/26b-05</option>
+      <option value="5">014/29a-02</option>
+      <option value="6">014/29a-03</option>
+      <option value="7">014/29a-04</option>
+      <option value="8">014/29A-A1 (GLDEYE-A04)</option>
+      <option value="9">014/29A-A5 (GLDEYE-A03)</option>
+      <option value="10">015/16-05</option>
+      <option value="11">015/17-13</option>
+      <option value="12">015/18-02</option>
+      <option value="13">015/18a-08</option>
+      <option value="14">015/21-03</option>
+      <option value="15">015/21a-10</option>
+      <option value="16">015/21A-39S1</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_SITETYPE"><i class="material-icons">border_style</i> SITE TYPE</label>
+    <select class="form-control" id="WH_SITETYPE" name="WH_SITETYPE">
+      <option value="1">WELL</option>
+      <option value="0">FIELD</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_SITETYPE"><i class="material-icons">format_bold</i> FIELD NAME</label>
+    <select class="form-control" id="WH_FIELD" name="WH_FIELD">
+      <option value="25">Duart</option>
+      <option value="0">014/26a-06 (Atlantic)</option>
+      <option value="76">Thunderball</option>
+      <option value="50">HOYLAKE</option>
+      <option value="73">TARTAN</option>
+      <option value="19">CHANTER</option>
+      <option value="1">015/18A-12 (Maria)</option>
+      <option value="51">Ivanhoe</option>
+      <option value="2">015/21B-47 (Perth)</option>
+      <option value="62">Perth</option>
+      <option value="71">Scott</option>
+      <option value="58">Macculloch</option>
+      <option value="65">Rochelle</option>
+      <option value="64">RUBIE</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="BLOCK_NAME"><i class="material-icons">format_italic</i> BLOCK NAME</label>
+    <select class="form-control" id="BLOCK_NAME" name="BLOCK_NAME">
+      <option value="0">013/23</option>
+      <option value="1">014/20B (EXCL. TARTAN)</option>
+      <option value="2">014/26a</option>
+      <option value="3">014/26b</option>
+      <option value="4">014/29</option>
+      <option value="5">014/29a</option>
+      <option value="6">015/16</option>
+      <option value="7">015/17b</option>
+      <option value="8">015/18a</option>
+      <option value="9">015/21</option>
+      <option value="10">015/21a Residual Area</option>
+      <option value="11">015/21a</option>
+      <option value="12">015/21b</option>
+      <option value="13">015/22</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_COORD_SYS"><i class="material-icons">gps_fixed</i> Location CRS</label>
+    <select class="form-control" id="WH_COORD_SYS" name="WH_COORD_SYS">
+      <option value="1">World Geodetic System 1984</option>
+      <option value="2">World Geodetic System 1984 - 2</option>
+      <option value="0">ED50</option>
+      <option value="3">None</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_OPERATOR"><i class="material-icons">assistant</i> Operator</label>
+    <select class="form-control" id="WH_OPERATOR" name="WH_OPERATOR">
+      <option value="2">ARCO</option>
+      <option value="15">OCCIDENTAL</option>
+      <option value="12">MONSANTO</option>
+      <option value="1">AMOCO</option>
+      <option value="4">BRITOIL</option>
+      <option value="13">NEXEN INC</option>
+      <option value="8">ENDEAVOUR</option>
+      <option value="6">CHARTERHOUSE</option>
+      <option value="7">CONOCO</option>
+      <option value="25">VENTURE</option>
+      <option value="26">ZAPEX</option>
+      <option value="14">NOBLE ENERGY INC</option>
+      <option value="5">CENTRICA</option>
+      <option value="22">TEXACO</option>
+      <option value="16">PETRO-CANADA</option>
+      <option value="9">EON RUHGAS</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_SPUD_DATE"><i class="material-icons">filter_1</i> SPUD DATE</label>
+    <select class="form-control" id="WH_SPUD_DATE" name="WH_SPUD_DATE">
+      <option value="86">19-02-91 0:00</option>
+      <option value="84">18-08-87 0:00</option>
+      <option value="18">04-12-97 0:00</option>
+      <option value="23">05-09-99 0:00</option>
+      <option value="12">03-10-97 0:00</option>
+      <option value="113">23-11-80 0:00</option>
+      <option value="6">02-08-96 0:00</option>
+      <option value="25">06-01-98 0:00</option>
+      <option value="24">05-10-03 0:00</option>
+      <option value="94">19-12-03 0:00</option>
+      <option value="142">29-08-75 0:00</option>
+      <option value="148">30-05-85 0:00</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_COMP_DATE"><i class="material-icons">filter_2</i> COMPLETION DATE</label>
+    <select class="form-control" id="WH_COMP_DATE" name="WH_COMP_DATE">
+      <option value="25">05-05-91 0:00</option>
+      <option value="106">24-10-87 0:00</option>
+      <option value="72">15-01-98 0:00</option>
+      <option value="127">28-09-99 0:00</option>
+      <option value="128">28-11-97 0:00</option>
+      <option value="134">30-01-81 0:00</option>
+      <option value="31">06-10-96 0:00</option>
+      <option value="135">30-01-98 0:00</option>
+      <option value="86">18-12-03 0:00</option>
+      <option value="23">05-03-04 0:00</option>
+      <option value="32">06-11-75 0:00</option>
+      <option value="37">08-09-85 0:00</option>
+      <option value="116">26-12-76 0:00</option>
+      <option value="24">05-03-92 0:00</option>
+      <option value="101">23-10-75 0:00</option>
+      <option value="2">01-04-84 0:00</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="WH_DEPTH_REF"><i class="material-icons">vertical_align_bottom</i> DEPTH REFERENCE</label>
+    <select class="form-control" id="WH_DEPTH_REF" name="WH_DEPTH_REF">
+      <option value="2">Kelly bushing amsl</option>
+      <option value="3">RT</option>
+      <option value="0">DF</option>
+      <option value="1">KB</option>
+      <option value="4">None</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_SAMPLE_TYPE"><i class="material-icons">bubble_chart</i> SAMPLE TYPE</label>
+    <select class="form-control"  step="0.01" id="SH_SAMPLE_TYPE" name="SH_SAMPLE_TYPE">
+      <option value="0">Gas</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_SAMPLE_SUB_TYPE"><i class="material-icons">format_shapes</i> SAMPLE ORIGIN/SUBTYPE</label>
+    <select class="form-control"  step="0.01" id="SH_SAMPLE_SUB_TYPE" name="SH_SAMPLE_SUB_TYPE">
+      <option value="0">Headspace</option>
+      <option value="3">Surface</option>
+      <option value="1">Mudgas</option>
+      <option value="4">Unspecified</option>
+      <option value="2">Subsurface</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_ORIG"><i class="material-icons">highlight</i> SAMPLE ORIGIN</label>
+    <select class="form-control"  step="0.01" id="SH_ORIG" name="SH_ORIG">
+      <option value="2">DST</option>
+      <option value="3">HEAD</option>
+      <option value="5">MDT</option>
+      <option value="1">Anul</option>
+      <option value="0">ANUL</option>
+      <option value="6">ROV</option>
+      <option value="8">UNKN</option>
+      <option value="9">None</option>
+      <option value="4">ISOT</option>
+      <option value="7">SEPR</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_TREATMENT"><i class="material-icons">merge_type</i> SAMPLE TREATMENT</label>
+    <select class="form-control"  step="0.01" id="SH_TREATMENT" name="SH_TREATMENT">
+      <option value="0">Asis</option>
+      <option value="1">Asix</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_FORM"><i class="material-icons">insert_link</i> FORMATION</label>
+    <select class="form-control"  step="0.01" id="SH_FORM" name="SH_FORM">
+      <option value="58">SCAPA</option>
+      <option value="39">KIMMERIDGE SANDSTONE</option>
+      <option value="48">MACKEREL</option>
+      <option value="52">PUFFIN</option>
+      <option value="27">HORDA (TAY)</option>
+      <option value="6">Chalk</option>
+      <option value="75">TAY SANDS</option>
+      <option value="3">BALDER (ODIN SST)</option>
+      <option value="61">SELE (FORTIES SST)</option>
+      <option value="66">SELE (S3)</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_CDATE"><i class="material-icons">filter_3</i> COLLECTION DATE</label>
+    <select class="form-control" id="SH_CDATE" name="SH_CDATE">
+      <option value="32">06-11-75 0:00</option>
+      <option value="37">08-09-85 0:00</option>
+      <option value="116">26-12-76 0:00</option>
+      <option value="24">05-03-92 0:00</option>
+      <option value="101">23-10-75 0:00</option>
+      <option value="2">01-04-84 0:00</option>
+      <option value="25">05-05-91 0:00</option>
+      <option value="106">24-10-87 0:00</option>
+      <option value="72">15-01-98 0:00</option>
+      <option value="127">28-09-99 0:00</option>
+      <option value="188">28-11-97 0:00</option>
+      <option value="198">30-01-81 0:00</option>
+      <option value="39">06-10-96 0:00</option>
+      <option value="195">30-01-98 0:00</option>
+      <option value="87">18-12-83 0:00</option>
+      <option value="83">05-03-84 0:00</option>
+      <option value="174">30-01-91 0:00</option>
+      <option value="30">06-10-96 0:00</option>
+      <option value="138">30-01-88 0:00</option>
+      <option value="85">18-12-05 0:00</option>
+      <option value="243">05-03-02 0:00</option>
+      <option value="227">28-09-93 0:00</option>
+      <option value="228">28-11-94 0:00</option>
+      <option value="154">30-11-81 0:00</option>
+      <option value="45">06-10-96 0:00</option>
+      <option value="44">30-01-98 0:00</option>
+      <option value="49">18-12-93 0:00</option>
+      <option value="48">05-03-04 0:00</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="GAS_METHOD"><i class="material-icons">camera_rear</i> METHOD USED</label>
+    <select class="form-control"  step="0.01" id="GAS_METHOD" name="GAS_METHOD">
+      <option value="1">Not Air corrected</option>
+      <option value="3">Not corrected</option>
+      <option value="2">Not air corrected</option>
+      <option value="4">UNKNOWN</option>
+      <option value="0">Air corrected</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="GAS_LAB"><i class="material-icons">tonality</i> LABORATORY</label>
+    <select class="form-control"  step="0.01" id="GAS_LAB" name="GAS_LAB">
+      <option value="0">ABE_PC_LAB</option>
+      <option value="2">ISO_LAB</option>
+      <option value="3">KSEPL</option>
+      <option value="4">RTS</option>
+      <option value="1">ISOLAB</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="GAS_ACQ_DATE"><i class="material-icons">filter_4</i> ACQ DATE</label>
+    <select class="form-control" id="GAS_ACQ_DATE" name="GAS_ACQ_DATE">
+      <option value="32">01-04-84 0:00</option>
+      <option value="33">05-05-91 0:00</option>
+      <option value="80">24-10-87 0:00</option>
+      <option value="72">15-01-98 0:00</option>
+      <option value="127">28-09-99 0:00</option>
+      <option value="188">28-11-97 0:00</option>
+      <option value="198">30-01-81 0:00</option>
+      <option value="39">06-10-96 0:00</option>
+      <option value="195">30-01-98 0:00</option>
+      <option value="87">18-12-83 0:00</option>
+      <option value="83">05-03-84 0:00</option>
+      <option value="174">30-01-91 0:00</option>
+      <option value="30">06-10-96 0:00</option>
+      <option value="138">30-01-88 0:00</option>
+      <option value="45">06-11-75 0:00</option>
+      <option value="59">08-09-85 0:00</option>
+      <option value="100">26-12-76 0:00</option>
+      <option value="22">05-03-92 0:00</option>
+      <option value="101">23-10-75 0:00</option>
+      <option value="85">18-12-05 0:00</option>
+      <option value="243">05-03-02 0:00</option>
+      <option value="227">28-09-93 0:00</option>
+      <option value="228">28-11-94 0:00</option>
+      <option value="154">30-11-81 0:00</option>
+      <option value="45">06-10-96 0:00</option>
+      <option value="44">30-01-98 0:00</option>
+      <option value="49">18-12-93 0:00</option>
+      <option value="48">05-03-04 0:00</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="D_G_METHOD"><i class="material-icons">tune</i> DG METHOD USED</label>
+    <select class="form-control"  step="0.01" id="D_G_METHOD" name="D_G_METHOD">
+      <option value="1">GC-IRMS</option>
+      <option value="2">GCMS</option>
+      <option value="3">nan</option>
+      <option value="0">CSIA</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="D_G_LAB"><i class="material-icons">leak_add</i> DG LABORATORY</label>
+    <select class="form-control"  step="0.01" id="D_G_LAB" name="D_G_LAB">
+      <option value="1">Ksepl</option>
+      <option value="2">None</option>
+      <option value="0">Isolab</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="D_G_DATA_TYPE"><i class="material-icons">iso</i> D_G DATA TYPE</label>
+    <select class="form-control"  step="0.01" id="D_G_DATA_TYPE" name="D_G_DATA_TYPE">
+      <option value="0">None</option>
+      <option value="1">Per Mill</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="D_G_ACQ_DATE"><i class="material-icons">filter_5</i> DG ACQ DATE</label>
+    <select class="form-control" id="D_G_ACQ_DATE" name="D_G_ACQ_DATE">
+      <option value="41">01-04-84 0:00</option>
+      <option value="56">05-05-91 0:00</option>
+      <option value="98">24-10-87 0:00</option>
+      <option value="19">15-01-98 0:00</option>
+      <option value="29">28-09-99 0:00</option>
+      <option value="188">28-11-97 0:00</option>
+      <option value="198">30-01-81 0:00</option>
+      <option value="39">06-10-96 0:00</option>
+      <option value="195">30-01-98 0:00</option>
+      <option value="87">18-12-83 0:00</option>
+      <option value="83">05-03-84 0:00</option>
+      <option value="174">30-01-91 0:00</option>
+      <option value="30">06-10-96 0:00</option>
+      <option value="138">30-01-88 0:00</option>
+      <option value="45">06-11-75 0:00</option>
+      <option value="59">08-09-85 0:00</option>
+      <option value="100">26-12-76 0:00</option>
+      <option value="22">05-03-92 0:00</option>
+      <option value="101">23-10-75 0:00</option>
+      <option value="85">18-12-05 0:00</option>
+      <option value="243">05-03-02 0:00</option>
+      <option value="227">28-09-93 0:00</option>
+      <option value="228">28-11-94 0:00</option>
+      <option value="154">30-11-81 0:00</option>
+      <option value="45">06-10-96 0:00</option>
+      <option value="44">30-01-98 0:00</option>
+      <option value="49">18-12-93 0:00</option>
+      <option value="48">05-03-04 0:00</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="form-group">
+    <label for="SH_COMMENT"><i class="material-icons">comment</i> COMMENT</label>
+    <select class="form-control" id="SH_COMMENT" name="SH_COMMENT">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="WH_SPUD_YEAR"><i class="material-icons">filter_6</i> SPUD YEAR (1970-2017)</label>
+      <input class="form-control"  step="0.01" id="WH_SPUD_YEAR" name="WH_SPUD_YEAR">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="WH_TD_M"><i class="material-icons">call_received</i> TARGET DEPTH (M)</label>
+      <input class="form-control"  step="0.01" id="WH_TD_M" name="WH_TD_M">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="WH_DR_ELEV_M"><i class="material-icons">call_split</i> DERRIC FLOOR ELEVATION (M)</label>
+      <input class="form-control"  step="0.01" id="WH_DR_ELEV_M" name="WH_DR_ELEV_M">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+  <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="SH_DEPTH_TOP_FT"><i class="material-icons">call_made</i> TOP DEPTH IN FEET</label>
+      <input class="form-control"  step="0.01" id="SH_DEPTH_TOP_FT" name="SH_DEPTH_TOP_FT">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="SH_DEPTH_BOT_FT"><i class="material-icons">call_merge</i> BASE DEPTH IN FEET</label>
+      <input class="form-control"  step="0.01" id="SH_DEPTH_BOT_FT" name="SH_DEPTH_BOT_FT">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="GAS_CO2"><i class="material-icons">import_export</i> CO2 CONCENTRACY</label>
+      <input class="form-control"  step="0.01" id="GAS_CO2" name="GAS_CO2">
+      </div>
+    </div>
+
+  </div>
+
+   <div class="row">
+  <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="CSIA_ETHENE "><i class="material-icons">call_made</i> CSIA_ETHENE </label>
+      <input class="form-control"  step="0.01" id="CSIA_ETHENE " name="CSIA_ETHENE ">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="CSIA_PROPENE"><i class="material-icons">call_merge</i> CSIA_PROPENE</label>
+      <input class="form-control"  step="0.01" id="CSIA_PROPENE" name="CSIA_PROPENE">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="CSIA_CONC_C1"><i class="material-icons">import_export</i> CSIA_CONC_C1</label>
+      <input class="form-control"  step="0.01" id="CSIA_CONC_C1" name="CSIA_CONC_C1">
+      </div>
+    </div>
+
+  </div>
+
+   <div class="row">
+  <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="GAS_H2"><i class="material-icons">wifi_tethering</i> GAS_H2</label>
+      <input class="form-control"  step="0.01" id="GAS_H2" name="GAS_H2">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="GAS_H2S"><i class="material-icons">linear_scale</i> GAS_H2S</label>
+      <input class="form-control"  step="0.01" id="GAS_H2S" name="GAS_H2S">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="GAS_N2"><i class="material-icons">swap_calls</i> GAS_N2</label>
+      <input class="form-control"  step="0.01" id="GAS_N2" name="GAS_N2">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+  <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="WH_LAT"><i class="material-icons">hdr_strong</i> WH_LAT</label>
+      <input class="form-control"  step="0.01" id="WH_LAT" name="WH_LAT">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="WH_LONG"><i class="material-icons">hdr_weak</i> WH_LONG</label>
+      <input class="form-control"  step="0.01" id="WH_LONG" name="WH_LONG">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+      <label class="bmd-label-floating" for="SAMPLE_ID"><i class="material-icons">my_location</i> SAMPLE_ID (LAST 4 NUMS)</label>
+      <input class="form-control"  step="0.01" id="SAMPLE_ID" name="SAMPLE_ID">
+      </div>
+    </div>
+
+  </div>
+
+    <input class="btn btn-success" type="submit" value="Analyse">
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<h3>Your data</h3>
+
+<table>
+        <tr>
+                <th>Description</th>
+                <th>Your value</th>
+        </tr>
+        {% for k, v in dict.items() %}
+                <tr>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                </tr>
+        {% endfor %}
+</table>
+<h2>Result</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">#</th>
+      <th scope="col">GAS_C1</th>
+      <th scope="col">GAS_C2</th>
+      <th scope="col">GAS_C3</th>
+      <th scope="col">GAS_IC4</th>
+      <th scope="col">GAS_NC4</th>
+      <th scope="col">GAS_IC5</th>
+      <th scope="col">GAS_NC5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" class="text-center">1</th>
+      <td>88.888863</td>
+      <td>6.629120</td>
+      <td>5.226950</td>
+      <td>0.102853</td>
+      <td>0.982187</td>
+      <td>0.044598</td>
+      <td>0.268457</td>
+    </tr>
+  </tbody>
+</table>
+
+     <h2>Feature Importance</h2>
+     <img src="../static/assets/img/featimp.png" alt="">
+     <h2>Confusion Matrix</h2>
+     <img src="../static/assets/img/matrix.png" alt="">
+     <h2>Map by WH_LAT and WH_LONG</h2>
+     <img src="../static/assets/img/map.png" alt="">
+     
+{% endblock %}
